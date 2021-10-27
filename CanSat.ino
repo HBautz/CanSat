@@ -1,5 +1,5 @@
 
-const String Callsign = "Hindenburg";
+const String Callsign = "Hindenburg 2";
 
 // The GY91 reads the data from the GY91 module
 #include <GY91.h>
@@ -148,8 +148,10 @@ void loop() {
   printB(gz);
   printB(";");
 
+#endif
 
-      // Mag
+#if DO_MAGNET == 1
+      // Magnet
 
   //Update mag vars
   mx = gy91.mx;
@@ -164,7 +166,9 @@ void loop() {
   printB(mz);
   printB(";");
 
+#endif
 
+#if DO_VIN == 1
 
       //VIN
 
@@ -174,7 +178,9 @@ void loop() {
   // Buffer
   printB(VIN);
   printB(";");
-  
+
+#endif
+
       // Send
   
   rfm96.sendAndWriteToFile();  
