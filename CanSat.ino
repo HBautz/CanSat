@@ -30,7 +30,7 @@ double ax, ay, az, gx, gy, gz, mx, my, mz;
 
 // We need to make an instance of the two objects
 GY91 gy91;
-Cansat_RFM96 rfm96(433350, USE_SD);
+Cansat_RFM96 rfm96(433350, USE_SD);   // if DO_SD is 1 we will save to an SD card
 
 void setup() {
   Serial.begin(9600);
@@ -55,7 +55,8 @@ void loop() {
 
 #if DO_CALLSIGN == 1
       // Callsign
-      
+
+  // Add the data to the buffer. These functions do not initiate a transfer
   printB(Callsign);
   printB(";");
 #endif
@@ -77,7 +78,8 @@ void loop() {
 
 #if DO_COUNTER == 1
       // Counter
-      
+
+  // Buffer
   printB(counter++);
   printB(";");
 
@@ -93,7 +95,7 @@ void loop() {
 
   
   
-  // Add the data to the buffer. These functions do not initiate a transfer
+  // 
   printB(pressure);
   printB(";");
   
