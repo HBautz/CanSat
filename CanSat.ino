@@ -183,7 +183,7 @@ void setup() {
   analogReadResolution(12);
   analogWriteResolution(16);
   
-  actP = (gy91.readPressure());
+  actP = (gy91.readPressure() - 500);
   Serial.println("Activation pressure:");
   Serial.print("\t");
   Serial.println(actP);
